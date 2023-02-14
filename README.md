@@ -1,0 +1,2 @@
+# compass
+display angular velocity
