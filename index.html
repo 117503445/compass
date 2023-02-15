@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Compass</title>
   </head>
-  <link href='https://fonts.font.im/css?family=Source+Sans+Pro:700' rel='stylesheet' type='text/css'>
-  <body style="font-family: 'Source Sans Pro';">
+  <link
+    href="https://fonts.font.im/css?family=Source+Sans+Pro:700"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <body style="font-family: 'Source Sans Pro'">
     <p>Compass (Limited by API compatibility, may only run on Android)</p>
     <p id="alpha"></p>
     <p id="beta"></p>
@@ -34,7 +38,6 @@
     window.addEventListener(
       "deviceorientation",
       function (event) {
-        console.log(event);
         document.getElementById("alpha").innerHTML =
           "alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + NumberToFixedStr(event.alpha);
 
@@ -50,7 +53,6 @@
     window.addEventListener(
       "devicemotion",
       function (event) {
-        console.log(event);
         document.getElementById("acc-alpha").innerHTML =
           "acc-alpha&nbsp;" + NumberToFixedStr(event.rotationRate.alpha);
         document.getElementById("acc-beta").innerHTML =
