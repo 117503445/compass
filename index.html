@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compass</title>
+  </head>
+  <link href='https://fonts.font.im/css?family=Source+Sans+Pro:700' rel='stylesheet' type='text/css'>
+  <body style="font-family: 'Source Sans Pro';">
+    <p>Compass (Limited by API compatibility, may only run on Android)</p>
+    <p id="alpha"></p>
+    <p id="beta"></p>
+    <p id="gamma"></p>
+
+    <p id="acc-alpha"></p>
+    <p id="acc-beta"></p>
+    <p id="acc-gamma"></p>
+  </body>
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    // VConsole 默认会挂载到 `window.VConsole` 上
+    var vConsole = new window.VConsole();
+  </script>
+  <script>
+    function NumberToFixedStr(num) {
+      num = num.toFixed(2);
+      let addSpace = 4 - num.indexOf(".");
+      for (let i = 0; i < addSpace; i++) {
+        num = "&nbsp;" + num;
+      }
+      return num;
+    }
+    window.addEventListener(
+      "deviceorientation",
+      function (event) {
+        console.log(event);
+        document.getElementById("alpha").innerHTML =
+          "alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + NumberToFixedStr(event.alpha);
+
+        document.getElementById("beta").innerHTML =
+          "beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+          NumberToFixedStr(event.beta);
+        document.getElementById("gamma").innerHTML =
+          "gamma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + NumberToFixedStr(event.gamma);
+      },
+      true
+    );
+
+    window.addEventListener(
+      "devicemotion",
+      function (event) {
+        console.log(event);
+        document.getElementById("acc-alpha").innerHTML =
+          "acc-alpha&nbsp;" + NumberToFixedStr(event.rotationRate.alpha);
+        document.getElementById("acc-beta").innerHTML =
+          "acc-beta&nbsp;&nbsp;" + NumberToFixedStr(event.rotationRate.beta);
+        document.getElementById("acc-gamma").innerHTML =
+          "acc-gamma&nbsp;" + NumberToFixedStr(event.rotationRate.gamma);
+      },
+      true
+    );
+  </script>
+</html>
